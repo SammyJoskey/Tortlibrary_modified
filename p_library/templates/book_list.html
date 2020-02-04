@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Книги {% endblock %}
+
+{% block content %}
+    <h3 class="display-4 text-center my-4">Список книг</h3>
+      <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Название книги</th>
+                <th>Обложка </th>
+                <th>Автор(ы) </th>
+                <th>Страна </th>
+                <th>Описание </th>
+                <th>Год первого издания </th>
+                <th>Издательство </th>
+                <th>ISBN </th>
+                <th>Копии </th>
+                <th>Увеличить/Уменьшить кол-во копий</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in book_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td style="font-size:18px"><strong>{{ book.title }}</strong></td>
+                <td>{% if book.image %} <img style="width:85px" src="{{ MEDIA_URL }}{{ book.image }}">{% endif %}</td> 
+                <td>{% for author in book.authors.all %} {{ author.full_name}}{% if not forloop.last %}, {% endif %} {% endfor %} </td>
+                <td>{{ book.country}}</td>
+                <td>{{ book.description }}</td>
+                <td>{{ book.year_release }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.ISBN }} </td>
+                <td>{{ book.copy_count }}</td>
+                <td>
+                    <form action="/index/book_increment/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{book.id}}" />
+                        <input type="submit" value="Увеличить кол-во" />
+                    </form>
+                        <form action="/index/book_decrement/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{book.id}}" />
+                        <input type="submit" value="Уменьшить кол-во" />
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

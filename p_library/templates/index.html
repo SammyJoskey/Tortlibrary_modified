@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block index %}
+
+<div class="display-4 text-center my-4">
+Добро пожаловать в {{ title }}.<br>
+Тут собрано {{ books|length }} книг из моей личной коллекции.
+</div>
+{% endblock %}
