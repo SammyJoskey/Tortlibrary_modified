@@ -3,10 +3,8 @@
 {% block title %} Авторы {% endblock %}
 
 {% block content %}
-    <h3 class="display-4 text-center my-4">Список авторов книг</h3>
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-            <table class="table table-striped">
+    <h2 class="display-4 text-center">Список авторов книг</h2>
+            <table class="table table-striped col-lg-6 mx-auto">
                 <thead>
                     <tr>
                         <th> Имя автора </th>
@@ -24,6 +22,5 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
-    </div>
+
 {% endblock %}
