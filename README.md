@@ -12,3 +12,4 @@ heroku run python manage.py makemigrations p_library
 heroku run python manage.py migrate
 heroku run python manage.py loaddata data.json
 
+Сайт: https://tortlibrary.herokuapp.com/
