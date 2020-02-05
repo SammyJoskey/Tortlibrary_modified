@@ -15,4 +15,4 @@ heroku run python manage.py migrate
 heroku run python manage.py loaddata data.json
 
 
-Сайт: https://tortlibrary.herokuapp.com/
+Сайт библиотеки на Heroku: https://tortlibrary.herokuapp.com/
